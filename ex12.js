@@ -21,7 +21,22 @@ const alunos =[
     }
 ]
 
-function calculaMedia(n1, n2, n3){
+function calcularMedia(n1, n2, n3){
     const media = (n1 + n2 + n3) / 3
+
+    return media.toFixed(2)
 }
 
+//Laço de repetição para calcular a média de cada aluno
+for(let i = 0; alunos.length > i; i++){
+   const aluno = alunos[i]
+   
+   const media = calcularMedia(aluno.notas[0], aluno.notas[1], aluno.notas[2])
+
+    if(media >= 6){
+        console.log(`${aluno.nome} a média é ${media} - APROVADO`)
+        continue
+    }
+
+    console.log (`${aluno.nome} a media é ${media} - REPROVADO`)
+}
