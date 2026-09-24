@@ -69,8 +69,13 @@ function listarProdutos(idade){
     return produtos
 }
 
-function acessarSistema(email, senha){
-    const userData = login(email, senha)
+async function acessarSistema(email, senha){
+    const userData = await Promise.resolve(login(email, senha))
+
+    if(userData === undefined){
+        console.log("Email ou senha inválidos!")
+        return
+    }
 
     const produtos = listarProdutos(userData.idade)
 
@@ -79,3 +84,4 @@ function acessarSistema(email, senha){
 }
 
 acessarSistema("samuel@gmail.com", "teste123")
+
